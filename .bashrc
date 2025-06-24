@@ -19,9 +19,11 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 
-
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+
+alias ds='sudo systemctl start docker'
+
 #PS1='[\u@\h \W]\$ '
 # PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\e[0m\]:\$ '
 PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\$ '
