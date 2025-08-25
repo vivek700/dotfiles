@@ -4,4 +4,9 @@
 -- See the kickstart.nvim README for more information
 return {
   'https://github.com/mellow-theme/mellow.nvim.git',
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 }
