@@ -30,7 +30,7 @@
 
     "custom/clipboard": {
      "format": "󰅇",
-     "on-click": "cliphist list | wofi --dmenu --width 600 --height 400 --cache-file /dev/null | cliphist decode | wl-copy",
+     "on-click": "cliphist list | wofi --dmenu --width 500 --height 300 --cache-file /dev/null | cliphist decode | wl-copy",
      "on-click-right": "rm ~/.cache/cliphist/db && notify-send 'Clipboard Cleared'",
      "tooltip": false
     },

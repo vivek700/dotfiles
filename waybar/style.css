@@ -7,14 +7,14 @@
 
 
 window#waybar {
-    background-color: transparent;
+    background-color: rgba(22,22,23,1); /*dark*/
     font-family: inherit;
-    color: @theme_text_color;
+    color: #cdd6f4;
+    transition: all 0.3s ease;
 }
 
 .modules-right, .modules-center, .modules-left{
-    background-color: rgba(25,27,38,1); /* One Dark / Catppuccin style */
-    color: #cdd6f4;
+    background-color: transparent; 
     border-radius: 15px;
     padding: 2px 10px;
     margin: 0 1px; /* Spacing between modules */
@@ -30,7 +30,8 @@ window#waybar.empty {
     background-color: transparent;
 }
 window#waybar.solo {
-    background-color: transparent;
+    background-color: rgba(22,22,23,1); /*dark*/
+    transition: all 0.3s ease;
 }
 
 
@@ -205,7 +206,7 @@ label:focus {
 }
 
 tooltip {
-    background-color: rgba(25,27,38,1); /* One Dark  */
+    background-color: rgba(22,22,23,1); /*dark*/
     border: 2px solid #822b4e;
     border-radius: 8px;
     font-family: "JetBrains Mono", "Fira Code"; /* Great for devs */
