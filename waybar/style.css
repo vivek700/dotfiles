@@ -149,21 +149,9 @@ button:hover {
     padding-right: 13px;
     padding-bottom: 2px;
 }
-
-
-
 label:focus {
     background-color: #000000;
 }
-
-
-
-
-
-#tray {
-    background-color: #2980b9;
-}
-
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
