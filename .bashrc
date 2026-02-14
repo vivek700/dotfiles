@@ -45,3 +45,14 @@ export PATH="$PATH:/home/vivek/.turso"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+export STM32_PRG_PATH=/home/vivek/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
+# pnpm
+export PNPM_HOME="/home/vivek/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+. "/home/vivek/.deno/env"
+source /home/vivek/.local/share/bash-completion/completions/deno.bash
+. "$HOME/.cargo/env"
