@@ -61,7 +61,7 @@ button:hover {
 #pulseaudio:hover,
 #custom-clipboard:hover,
 #clock:hover,
-#network:hover,
+/* #network:hover, */
 #tray:hover,
 #power-profiles-daemon:hover
 {
@@ -99,7 +99,7 @@ button:hover {
 #memory,
 #disk,
 #temperature,
-#network,
+/* #network, */
 #pulseaudio,
 #wireplumber,
 #custom-media,
@@ -119,9 +119,9 @@ button:hover {
 
 }
 
-#network {
-    padding: 0 6px 0 10px;
-}
+/* #network { */
+/*     padding: 0 6px 0 10px; */
+/* } */
 
 #window,
 #workspaces {

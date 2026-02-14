@@ -17,7 +17,6 @@
         "pulseaudio",
         "custom/clipboard",
         "custom/media",
-        "network",
         "power-profiles-daemon",
         "cpu",
         "memory",
@@ -137,16 +136,16 @@
         "power-saver": ""
       }
     },
-
-    "network": {
-      "interval": 1, // Set to 1 for real-time speed updates
-      "format-wifi": " ",
-      "format-ethernet": "󰈀 ",
-      "format-linked": "󰈀  {ifname} (No IP)",
-      "format-disconnected": "󰲜 ",
-      "tooltip-format": "IP: {ipaddr}\nGateway: {gwaddr}\nInterface: {ifname}",
-      "on-click": "nm-connection-editor"
-},
+//
+//     "network": {
+//       "interval": 1, // Set to 1 for real-time speed updates
+//       "format-wifi": " ",
+//       "format-ethernet": "󰈀 ",
+//       "format-linked": "󰈀  {ifname} (No IP)",
+//       "format-disconnected": "󰲜 ",
+//       "tooltip-format": "IP: {ipaddr}\nGateway: {gwaddr}\nInterface: {ifname}",
+//       "on-click": "nm-connection-editor"
+// },
 
     
     "pulseaudio": {
