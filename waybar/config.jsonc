@@ -8,10 +8,11 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/window",
+        "hyprland/window"
     ],
     "modules-center": [
-        "clock",
+        "custom/arch",
+        "clock"
     ],
     "modules-right": [
         "pulseaudio",
@@ -25,6 +26,13 @@
         "tray",
         "custom/power"
     ],
+
+
+    "custom/arch": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "hyprlauncher"
+    },
 
 
     "custom/clipboard": {
@@ -54,28 +62,10 @@
     },
 
 
-    
-
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    
+   
     "tray": {
         // "icon-size": 21,
         "spacing": 5,
@@ -169,19 +159,6 @@
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
 
-    
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
     "custom/power": {
         "format" : "⏻ ",
 		"tooltip": false,
@@ -190,8 +167,7 @@
 		"menu-actions": {
 			"shutdown": "shutdown",
 			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+			"suspend": "systemctl suspend"
 		}
     }
 }
