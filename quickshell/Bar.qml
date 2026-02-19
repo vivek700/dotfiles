@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick
 
 Scope {
+
     PanelWindow {
         id: bar
         anchors {
@@ -28,10 +29,25 @@ Scope {
             }
 
             Workspaces {}
+            WindowTitle {}
         }
         ClockWidget {
             anchors.centerIn: parent
             panelWindow: bar
+        }
+        RowLayout {
+            anchors.right: parent.right
+            anchors.rightMargin: 12
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 18
+
+            PipewireAudio {}
+            Cpu {}
+            Ram {}
+            CpuTemp {}
+            Tray {
+                panelWindow: bar
+            }
         }
     }
 }
