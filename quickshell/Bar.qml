@@ -4,13 +4,14 @@ import QtQuick
 
 Scope {
     PanelWindow {
+        id: bar
         anchors {
             top: true
             left: true
             right: true
         }
         implicitHeight: 30
-        color: "#111111"
+        color: Theme.background
 
         //left side
         RowLayout {
@@ -22,14 +23,15 @@ Scope {
             Text {
                 text: "\uf303" // Arch Icon
                 font.family: "JetBrainsMono Nerd Font"
-                color: "#ffffff"
+                color: Theme.text
                 font.pixelSize: 18
             }
 
-            // Workspaces {}
+            Workspaces {}
         }
         ClockWidget {
             anchors.centerIn: parent
+            panelWindow: bar
         }
     }
 }
