@@ -1,20 +1,16 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 import Quickshell.Io
 import Quickshell.Services.Pipewire
 
-Item {
+RowLayout {
     id: root
-    width: row.implicitWidth
-    height: row.implicitHeight
-
     property var sink: Pipewire.defaultAudioSink
     property var source: Pipewire.defaultAudioSource
     property bool headphones: false
 
     PwObjectTracker {
-        objects: [sink, source].filter(x => x != null)
+        objects: [root.sink, root.source].filter(x => x != null)
     }
 
     function safeVolume(node) {
@@ -58,76 +54,71 @@ Item {
         command: ["pavucontrol"]
     }
 
-    RowLayout {
-        id: row
-        spacing: 8
+    Text {
+        text: {
+            const vol = root.safeVolume(root.sink);
+            const muted = root.safeMuted(root.sink);
+            const icon = muted ? "\uf466" : root.headphones ? "\uf025" : vol < 33 ? "\uf027" : "\uF028";
+            return icon + " " + vol + "%";
+        }
+        color: safeMuted(sink) ? Theme.muted : Theme.text
+        font.pixelSize: Theme.fontSize
+        font.family: Theme.font
 
-        Text {
-            text: {
-                const vol = safeVolume(sink);
-                const muted = safeMuted(sink);
-                const icon = muted ? "\uf466" : root.headphones ? "\uf025" : vol < 33 ? "\uf027" : "\uF028";
-                return icon + " " + vol + "%";
+        MouseArea {
+            anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: mouse => {
+                if (mouse.button === Qt.LeftButton) {
+                    if (root.sink?.ready)
+                        root.sink.audio.muted = !root.sink.audio.muted;
+                } else {
+                    pavucontrolProc.running = false;
+                    pavucontrolProc.running = true;
+                }
             }
-            color: safeMuted(sink) ? Theme.muted : Theme.text
-            font.pixelSize: Theme.fontSize
-            font.family: Theme.font
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                acceptedButtons: Qt.LeftButton | Qt.RightButton
-                onClicked: mouse => {
-                    if (mouse.button === Qt.LeftButton) {
-                        if (sink?.ready)
-                            sink.audio.muted = !sink.audio.muted;
-                    } else {
-                        pavucontrolProc.running = false;
-                        pavucontrolProc.running = true;
-                    }
-                }
-                onWheel: event => {
-                    if (!sink?.ready)
-                        return;
-                    const vol = sink.audio.volume;
-                    if (isNaN(vol))
-                        return;
-                    sink.audio.volume = event.angleDelta.y > 0 ? Math.min(1.0, vol + 0.05) : Math.max(0.0, vol - 0.05);
-                }
+            onWheel: event => {
+                if (!root.sink?.ready)
+                    return;
+                const vol = root.sink.audio.volume;
+                if (isNaN(vol))
+                    return;
+                root.sink.audio.volume = event.angleDelta.y > 0 ? Math.min(1.0, vol + 0.01) : Math.max(0.0, vol - 0.01);
             }
         }
+    }
 
-        Text {
-            text: {
-                const vol = safeVolume(source);
-                const muted = safeMuted(source);
-                return (muted ? "\uf131" : "\uf130") + " " + vol + "%";
+    Text {
+        text: {
+            const vol = root.safeVolume(root.source);
+            const muted = root.safeMuted(root.source);
+            return (muted ? "\uf131" : "\uf130") + " " + vol + "%";
+        }
+        color: safeMuted(source) ? Theme.muted : Theme.text
+        font.pixelSize: Theme.fontSize
+        font.family: Theme.font
+
+        MouseArea {
+            anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: mouse => {
+                if (mouse.button === Qt.LeftButton) {
+                    if (root.source?.ready)
+                        root.source.audio.muted = !root.source.audio.muted;
+                } else {
+                    pavucontrolProc.running = false;
+                    pavucontrolProc.running = true;
+                }
             }
-            color: safeMuted(source) ? Theme.muted : Theme.text
-            font.pixelSize: Theme.fontSize
-            font.family: Theme.font
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                acceptedButtons: Qt.LeftButton | Qt.RightButton
-                onClicked: mouse => {
-                    if (mouse.button === Qt.LeftButton) {
-                        if (source?.ready)
-                            source.audio.muted = !source.audio.muted;
-                    } else {
-                        pavucontrolProc.running = false;
-                        pavucontrolProc.running = true;
-                    }
-                }
-                onWheel: event => {
-                    if (!source?.ready)
-                        return;
-                    const vol = source.audio.volume;
-                    if (isNaN(vol))
-                        return;
-                    source.audio.volume = event.angleDelta.y > 0 ? Math.min(1.0, vol + 0.05) : Math.max(0.0, vol - 0.05);
-                }
+            onWheel: event => {
+                if (!root.source?.ready)
+                    return;
+                const vol = root.source.audio.volume;
+                if (isNaN(vol))
+                    return;
+                root.source.audio.volume = event.angleDelta.y > 0 ? Math.min(1.0, vol + 0.01) : Math.max(0.0, vol - 0.01);
             }
         }
     }
