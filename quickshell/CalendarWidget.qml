@@ -48,13 +48,14 @@ Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
             delegate: Item {
+                id: item
                 required property var model
                 Text {
                     anchors.centerIn: parent
-                    text: model.day
+                    text: item.model.day
                     color: model.today ? Theme.accent : model.month === grid.month ? Theme.text : Theme.muted
                     font.pixelSize: 12
-                    font.bold: model.today
+                    font.bold: item.model.today
                     font.family: Theme.font
                     horizontalAlignment: Text.AlignHCenter
                 }
