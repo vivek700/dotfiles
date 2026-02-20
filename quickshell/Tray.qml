@@ -4,18 +4,16 @@ import Quickshell.Services.SystemTray
 
 RowLayout {
     spacing: 6
-
     property var panelWindow
-
     Repeater {
         model: SystemTray.items
         delegate: Image {
             id: trayIcon
             required property SystemTrayItem modelData
-            width: 16
-            height: 16
-            sourceSize.width: 16
-            sourceSize.height: 16
+            width: 18
+            height: 18
+            sourceSize.width: 18
+            sourceSize.height: 18
             source: modelData.icon
 
             MouseArea {
@@ -23,11 +21,11 @@ RowLayout {
                 cursorShape: Qt.PointingHandCursor
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
                 onClicked: mouse => {
-                    if (mouse.button === Qt.RightButton || modelData.onlyMenu) {
+                    if (mouse.button === Qt.RightButton || trayIcon.modelData.onlyMenu) {
                         const pos = trayIcon.mapToItem(null, 0, trayIcon.height);
-                        modelData.display(panelWindow, pos.x, pos.y);
+                        trayIcon.modelData.display(panelWindow, pos.x, pos.y);
                     } else
-                        modelData.activate();
+                        trayIcon.modelData.activate();
                 }
             }
         }
