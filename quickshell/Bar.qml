@@ -3,7 +3,6 @@ import QtQuick.Layouts
 import QtQuick
 
 Scope {
-
     PanelWindow {
         id: bar
         anchors {
@@ -11,8 +10,15 @@ Scope {
             left: true
             right: true
         }
-        implicitHeight: 30
-        color: Theme.background
+        implicitHeight: 34
+        color: workspaces.currentHasWindows ? Theme.background : "transparent"
+
+        Behavior on color {
+            ColorAnimation {
+                duration: 300
+                easing.type: Easing.InOutQuad
+            }
+        }
 
         //left side
         RowLayout {
@@ -23,29 +29,39 @@ Scope {
 
             Text {
                 text: "\uf303" // Arch Icon
-                font.family: "JetBrainsMono Nerd Font"
+                font.family: Theme.font
                 color: Theme.text
                 font.pixelSize: 18
             }
 
-            Workspaces {}
+            Workspaces {
+                id: workspaces
+            }
             WindowTitle {}
         }
+        //center
         ClockWidget {
             anchors.centerIn: parent
             panelWindow: bar
         }
+        // right side
         RowLayout {
             anchors.right: parent.right
             anchors.rightMargin: 12
             anchors.verticalCenter: parent.verticalCenter
-            spacing: 18
+            spacing: 17
 
+            Clipboard {}
             PipewireAudio {}
             Cpu {}
             Ram {}
             CpuTemp {}
+            Notifications {}
+            PowerProfile {}
             Tray {
+                panelWindow: bar
+            }
+            PowerMenu {
                 panelWindow: bar
             }
         }
