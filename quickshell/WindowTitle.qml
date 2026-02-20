@@ -16,7 +16,7 @@ RowLayout {
     // }
 
     Text {
-        Layout.maximumWidth: 150
+        Layout.maximumWidth: 180
         text: Hyprland.activeToplevel?.title ?? ""
         color: Theme.text
         font.pixelSize: Theme.fontSize
