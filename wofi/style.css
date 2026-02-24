@@ -1,0 +1,14 @@
+window {
+  border: 2px solid #11e6a8;
+  border-radius: 8px;
+}
+
+#inner-box,
+#input {
+  margin: 5px;
+}
+
+#entry:selected {
+  background-color: #1a5c49;
+  border-radius: 2px;
+}
