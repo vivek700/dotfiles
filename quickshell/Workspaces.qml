@@ -8,7 +8,7 @@ RowLayout {
     spacing: 6
 
     property bool currentHasWindows: {
-        const ws = Hyprland.workspaces?.values?.find(w => w.id === Hyprland?.focusedMonitor?.activeWorkspace?.id);
+        const ws = Hyprland.workspaces.values.find(w => w.id === Hyprland?.focusedMonitor?.activeWorkspace?.id);
         return ws ? ws.toplevels.values.length > 0 : false;
     }
 
@@ -23,8 +23,8 @@ RowLayout {
             readonly property bool isActive: Hyprland.focusedWorkspace?.id === wsNumber
             readonly property bool hasWindow: Hyprland.workspaces.values.some(ws => ws.id === wsNumber)
 
-            width: 21
-            height: 23
+            width: 20
+            height: 20
             radius: 4
             color: delegateRec.isActive ? Theme.accent : 'transparent'
 
@@ -32,7 +32,7 @@ RowLayout {
                 anchors.centerIn: parent
                 text: delegateRec.wsNumber
                 color: delegateRec.isActive ? Theme.surface : delegateRec.hasWindow ? Theme.accent : Theme.muted
-                font.pixelSize: Theme.fontSize
+                font.pixelSize: 13
                 font.bold: delegateRec.isActive
                 font.family: Theme.font
             }
