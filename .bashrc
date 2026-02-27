@@ -13,7 +13,6 @@ fi
 
 
 # Alias's
-
 alias rm='gio trash'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -23,6 +22,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 alias ds='sudo systemctl start docker'
+
+# shutdown
+alias off='hyprshutdown --post-cmd "shutdown now"'
 
 #PS1='[\u@\h \W]\$ '
 # PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\e[0m\]:\$ '
