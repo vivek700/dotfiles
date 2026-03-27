@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 import Quickshell.Hyprland
 
 RowLayout {
@@ -12,7 +11,7 @@ RowLayout {
         return ws ? ws.toplevels.values.length > 0 : false;
     }
 
-    property int maxWorkspace: Math.max(3, ...Hyprland.workspaces.values.map(ws => ws.id))
+    property int maxWorkspace: Math.max(5, ...Hyprland.workspaces.values.map(ws => ws.id))
 
     Repeater {
         model: root.maxWorkspace
