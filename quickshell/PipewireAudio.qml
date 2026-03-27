@@ -59,7 +59,7 @@ RowLayout {
             const vol = root.safeVolume(root.sink);
             const muted = root.safeMuted(root.sink);
             const icon = muted ? "\uf466" : root.headphones ? "\uf025" : vol < 33 ? "\uf027" : "\uF028";
-            return icon + " " + vol + "%";
+            return icon + " " + vol + "% ";
         }
         color: safeMuted(sink) ? Theme.muted : Theme.text
         font.pixelSize: Theme.fontSize
@@ -93,7 +93,7 @@ RowLayout {
         text: {
             const vol = root.safeVolume(root.source);
             const muted = root.safeMuted(root.source);
-            return (muted ? "\uf131" : "\uf130") + " " + vol + "%";
+            return (muted ? "\uf131" : "\uf130" + " " + vol + "%");
         }
         color: safeMuted(source) ? Theme.muted : Theme.text
         font.pixelSize: Theme.fontSize
