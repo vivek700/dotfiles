@@ -57,7 +57,6 @@ Scope {
             Ram {}
             CpuTemp {}
             Notifications {}
-            PowerProfile {}
             Tray {
                 panelWindow: bar
             }
