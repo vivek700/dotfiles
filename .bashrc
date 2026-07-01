@@ -58,3 +58,6 @@ esac
 . "/home/vivek/.deno/env"
 source /home/vivek/.local/share/bash-completion/completions/deno.bash
 . "$HOME/.cargo/env"
+
+# go
+export PATH=$PATH:$HOME/go/bin
