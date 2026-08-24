@@ -28,10 +28,9 @@ alias off='hyprshutdown --post-cmd "shutdown now"'
 
 #PS1='[\u@\h \W]\$ '
 # PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\e[0m\]:\$ '
-PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\$ '
+PS1='\[\e[38;2;137;220;235m\]\u\[\e[0m\]@\[\e[38;2;245;194;231m\]\h\[\e[0m\]:\[\e[38;2;249;226;175m\]\w\[\e[0m\]\$ '
 export PATH=$HOME/.local/bin:$PATH
 
-eval "$(starship init bash)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -61,3 +60,8 @@ source /home/vivek/.local/share/bash-completion/completions/deno.bash
 
 # go
 export PATH=$PATH:$HOME/go/bin
+
+#default editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+
