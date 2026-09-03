@@ -51,6 +51,7 @@ Scope {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 17
 
+            Mpris {}
             Clipboard {}
             PipewireAudio {}
             Cpu {}
@@ -58,9 +59,6 @@ Scope {
             CpuTemp {}
             Notifications {}
             Tray {
-                panelWindow: bar
-            }
-            PowerMenu {
                 panelWindow: bar
             }
         }

@@ -24,11 +24,12 @@ alias grep='grep --color=auto'
 alias ds='sudo systemctl start docker'
 
 # shutdown
-alias off='hyprshutdown --post-cmd "shutdown now"'
+alias sd='hyprshutdown --post-cmd "systemctl poweroff"'
+alias rb='hyprshutdown --post-cmd "systemctl reboot"'
 
-#PS1='[\u@\h \W]\$ '
-# PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\e[0m\]:\$ '
-PS1='\[\e[38;2;137;220;235m\]\u\[\e[0m\]@\[\e[38;2;245;194;231m\]\h\[\e[0m\]:\[\e[38;2;249;226;175m\]\w\[\e[0m\]\$ '
+
+# PS1='[\u@\h \W]\$ '
+PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\e[0m\]:\[\e[33m\]\W\[\e[0m\]\$ '
 export PATH=$HOME/.local/bin:$PATH
 
 

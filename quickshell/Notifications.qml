@@ -11,7 +11,7 @@ Item {
 
     Process {
         id: countProc
-        command: ["sh", "-c", "dunstctl count waiting"]
+        command: ["sh", "-c", "dunstctl count history"]
         stdout: SplitParser {
             onRead: line => {
                 if (!line)
@@ -26,6 +26,10 @@ Item {
     Process {
         id: historyProc
         command: ["sh", "-c", "dunstctl history-pop"]
+        onExited: {
+            countProc.running = false;
+            countProc.running = true;
+        }
     }
 
     Process {
@@ -50,7 +54,8 @@ Item {
     Text {
         id: label
         leftPadding: 2
-        text: "\uf0f3" + (root.count > 0 ? " " + root.count : "")
+        rightPadding: -4
+        text: "\uf0f3"
         color: root.count > 0 ? Theme.accent : Theme.muted
         font.pixelSize: Theme.fontSize
         font.family: Theme.font
