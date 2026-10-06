@@ -23,7 +23,7 @@ hl.monitor({
 local terminal = "ghostty"
 local fileManager = "dolphin"
 local menu = "hyprlauncher"
-local browser = "thorium-browser"
+local browser = "thorium-browser-avx2"
 
 -------------------
 ---- AUTOSTART ----

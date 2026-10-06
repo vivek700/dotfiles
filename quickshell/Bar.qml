@@ -51,7 +51,6 @@ Scope {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 17
 
-            Mpris {}
             Clipboard {}
             PipewireAudio {}
             Cpu {}
